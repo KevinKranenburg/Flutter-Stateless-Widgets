@@ -7,7 +7,20 @@ void main() {
   ));
 }
 
+class FieldeenValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Field een kan\' niet leeg zijn' : null;
+  }
+}
 
+class FieldtweeValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Field twee kan\' niet leeg zijn' : null;
+  }
+}
+
+String _fieldeen;
+String _fieldtwee;
 
 class FirstRoute extends StatelessWidget {
   @override
@@ -49,6 +62,24 @@ class FirstRoute extends StatelessWidget {
                   },
                 ),
               ),
+              Container(
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: 'Field voor Unit Test'
+                  ),
+                  validator: FieldeenValidator.validate,
+                  onSaved: (value) => _fieldeen = value,
+                ),
+              ),
+              Container(
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: 'Nog een field voor Unit Test'
+                  ),
+                  validator: FieldtweeValidator.validate,
+                  onSaved: (value) => _fieldtwee = value,
+                ),
+              )
             ],
           )
       ),
